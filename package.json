@@ -1,0 +1,23 @@
+{
+"name": "punk",
+"version": "0.0.0",
+"description": "Message Passing for Node. Geared for Education.",
+"keywords": ["mpi", "distributed", "hpc", "parallel", "message", "passing", "concurrent", "learn", "education"],
+"homepage": "https://github.com/robertdfrench/punk",
+"bugs": { 
+  "url" : "http://github.com/owner/project/issues", 
+  "email" : "project@hostname.com"
+},
+"license": "LGPL-3.0",
+"author": {
+  "name": "Robert D. French",
+  "email": "frenchrd@ornl.gov",
+  "url": "http://robertdfrench.me"
+},
+"files": ["punk.js"],
+"main": "punk",
+"config": {},
+"dependencies": {
+  "express": "latest"
+}
+}
