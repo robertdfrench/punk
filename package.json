@@ -14,8 +14,7 @@
   "email": "frenchrd@ornl.gov",
   "url": "http://robertdfrench.me"
 },
-"files": ["punk.js"],
-"main": "punk",
+"files": ["README.md", "index.js", "index.coffee"],
 "config": {},
 "dependencies": {
   "express": "latest"
