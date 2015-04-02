@@ -1,22 +1,27 @@
 {
-"name": "punk",
-"version": "0.0.0",
-"description": "Message Passing for Node. Geared for Education.",
-"keywords": ["mpi", "distributed", "hpc", "parallel", "message", "passing", "concurrent", "learn", "education"],
-"homepage": "https://github.com/robertdfrench/punk",
-"bugs": { 
-  "url" : "http://github.com/owner/project/issues", 
-  "email" : "project@hostname.com"
-},
-"license": "LGPL-3.0",
-"author": {
-  "name": "Robert D. French",
-  "email": "frenchrd@ornl.gov",
-  "url": "http://robertdfrench.me"
-},
-"files": ["README.md", "index.js", "index.coffee"],
-"config": {},
-"dependencies": {
-  "express": "latest"
-}
+  "name": "punk",
+  "version": "0.0.0",
+  "description": "Message Passing for Node. Geared for Education.",
+  "keywords": ["mpi", "distributed", "hpc", "parallel", "message", "passing", "concurrent", "learn", "education"],
+  "homepage": "https://github.com/robertdfrench/punk",
+  "bugs": { 
+    "url" : "http://github.com/owner/project/issues", 
+    "email" : "project@hostname.com"
+  },
+  "license": "LGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertdfrench/punk"
+  }
+  "author": {
+    "name": "Robert D. French",
+    "email": "frenchrd@ornl.gov",
+    "url": "http://robertdfrench.me"
+  },
+  "files": ["README.md", "index.js", "index.coffee"],
+  "config": {},
+  "dependencies": {
+    "express": "latest",
+    "amqp": "latest"
+  }
 }
