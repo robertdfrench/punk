@@ -17,6 +17,7 @@
 "files": ["README.md", "index.js", "index.coffee"],
 "config": {},
 "dependencies": {
-  "express": "latest"
+  "express": "latest",
+  "rabbit.js": "latest" 
 }
 }
