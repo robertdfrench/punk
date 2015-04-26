@@ -22,6 +22,7 @@
   "config": {},
   "dependencies": {
     "express": "latest",
-    "rabbit.js": "latest" 
+    "rabbit.js": "latest",
+    "argv": "latest"
   }
 }
