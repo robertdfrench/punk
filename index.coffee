@@ -4,18 +4,40 @@ punk = {}
 punk.log = (msg) ->
 	ts = new Date()
 	console.log("[punk] " + ts + " : " + msg)
+punk.pass = (sock, obj) ->
+	sock.write(JSON.stringify(obj), 'utf8')
+punk.receive = (sock) ->
+	raw_msg = sock.read()
+	if raw_msg
+		return JSON.parse(raw_msg)
+	else
+		return false
+
+compute_receive_messages = (sub) ->
+	punk.log("Receiving some messages")
+	while obj = punk.receive(sub)
+		punk.log(obj)
 
 boot_compute_service = (ctx) ->
 	punk.log("Booting Compute Service")
-	sub = context.socket('SUBSCRIBE')
-	sub.connect('compute')
+	sub = ctx.socket('SUBSCRIBE')
+	sub.connect('compute', ->
+		punk.log("Subscribed to compute topic")
+		sub.on('readable', ->
+			punk.log("Subscription topic is readable")
+			compute_receive_messages(sub)
+		)
+	)
 
 api_actions = {}
-api_actions.load_client = (req, res, ctx) ->
+api_actions.load_client = (req, res, pub) ->
 	punk.log("Responding to /")
 	res.send('Hello World!')
-api_actions.ping = (req, res, ctx) ->
+
+api_actions.ping = (req, res, pub) ->
 	punk.log("Responding to /ping")
+	punk.pass(pub, {pid: process.pid, text: 'ping'})
+	res.send('Pinged e\'rbody!')
 
 boot_console_service = (ctx) ->
 	punk.log("Booting Console Service")
@@ -29,10 +51,10 @@ start_rest_app = (pub) ->
 	express = require "express"
 	app = express()
 	app.get('/', (req, res) ->
-		api_actions.load_client(req, res, ctx)
+		api_actions.load_client(req, res, pub)
 	)
 	app.get('/ping', (req,res) ->
-		api_actions.ping(req, res, ctx)
+		api_actions.ping(req, res, pub)
 	)
 	server = app.listen(3000, ->
 		host = server.address().address
